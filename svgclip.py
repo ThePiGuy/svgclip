@@ -39,7 +39,7 @@ def query_svg(svgfile):
         split = line.split(',')
         return [split[0]] + [float(x) for x in split[1:]]
     output = subprocess.check_output(["inkscape", "--query-all", svgfile])
-    lines = output.split('\n')
+    lines = output.decode().split('\n')
     return [parse_line(line) for line in lines]
 
 def get_bounding_box(svgfile):
